@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- bean scope is singleton scope, same service, shared same object -->
+
+	<bean id="web" class="int204p1.ex01.model.WebInfoService"
+		scope="singleton" />
+	<bean id="eml" class="int204p1.ex01.model.EmailInfoService"
+		scope="prototype" />
+
+
+	<!-- literal injection/construction injection -->
+
+	<bean id="emad" class="int204p1.ex01.model.EmailAddress">
+		<constructor-arg index="0" value="SIT" />
+		<constructor-arg index="1" value="sit@sit.kmutt.ac.th" />
+	</bean>
+
+	<!--object injection//construction injection -->
+
+	<bean id="ease" class="int204p1.ex01.model.EmailAddressService">
+		<constructor-arg ref="emad" />
+	</bean>
+</beans>
