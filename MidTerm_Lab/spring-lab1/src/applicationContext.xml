@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="possawat" class="int204.midterm1.Possawat"
+		scope="prototype" />
+
+	<bean id="pos" class="int204.midterm1.Possawat" scope="singleton" />
+
+	<context:property-placeholder
+		location="classpath:tanam.properties" />
+	<bean id="tanam" class="int204.midterm1.Tanam">
+		<property name="anam" value="${tanam.anam}"></property>
+	</bean>
+
+	<bean id="poss" class="int204.midterm1.Tanam">
+		<constructor-arg index="0" value="00064" />
+	</bean>
+
+	<bean id="anam" class="int204.midterm1.PossawatTanam">
+		<constructor-arg ref="pos" />
+		<constructor-arg ref="tanam" />
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
